@@ -1,5 +1,6 @@
 <template lang="html">
   <div
+    ref="mainDiv"
     :class="{
       'autocompletex':autocomplete,
       'activeOptions':active,
@@ -406,7 +407,10 @@
         }
       },
       focus() {
-        this.$refs.inputSelectLabel.click();
+        if (this.$refs.inputSelectLabel)
+          this.$refs.inputSelectLabel.click();
+        else
+          this.$refs.mainDiv.click();
         this.active = true;
         this.setLabelClass(this.$refs.inputSelectLabel, true);
         let inputx = this.$refs.inputselect;

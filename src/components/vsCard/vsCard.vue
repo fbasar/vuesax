@@ -4,7 +4,7 @@
     class="con-vs-card">
     <header
       v-if="hasSlot('header')"
-      class="vs-card--header">
+      :class="'vs-card--header '+ headerClass">
       <slot name="header"></slot>
     </header>
 
@@ -38,7 +38,7 @@
 <script>
   export default {
     name: 'VsCard',
-    props:{
+    props: {
       actionable: {
         default: false,
         type: Boolean
@@ -46,7 +46,8 @@
       fixedHeight: {
         default: false,
         type: Boolean
-      }
+      },
+      headerClass: {type: String, default: '', required: false}
     },
     methods: {
       hasSlot(slot) {

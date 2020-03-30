@@ -1,11 +1,11 @@
 {
   "name": "fvuesax",
-  "version": "3.11.21",
+  "version": "3.11.23",
   "description": "Framework Components for Vue js",
   "license": "MIT",
   "author": "fatih <fatih@fatihbasar.com>",
   "homepage": "https://github.com/fbasar/vuesax/#/",
-  "repository": "lusaxweb/vuesax",
+  "repository": "fbasar/vuesax",
   "bugs": {
     "url": "https://github.com/fbasar/vuesax/issues"
   },

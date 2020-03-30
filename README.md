@@ -96,7 +96,7 @@ If you feel awesome and want to support us in a small way, please consider starr
 - [Divider](https://lusaxweb.github.io/vuesax/components/divider.html)
 - [Chip](https://lusaxweb.github.io/vuesax/components/chip.html)
 - [Progress](https://lusaxweb.github.io/vuesax/components/progress.html)
-- [Card](https://lusaxweb.github.io/vuesax/components/card.html)
+- [Card](https://lusaxweb.github.io/vuesax/components/card.html) - [v3 - fixed or change version - 3.11.22]
 - [List](https://lusaxweb.github.io/vuesax/components/list.html)
 - [Pagination](https://lusaxweb.github.io/vuesax/components/pagination.html)
 - [Topbar](https://lusaxweb.github.io/vuesax/components/topbar.html)

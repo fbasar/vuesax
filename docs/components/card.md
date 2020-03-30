@@ -30,6 +30,10 @@ API:
     parameters:
     description: Hover effect
     default: false
+  - name: header-class
+    type: String
+    parameters:
+    description: This properties add header class
 contributors:
   - fergardi
   - RodSwanston
@@ -41,7 +45,13 @@ contributors:
 
   Cards contain content and actions about a single subject.
 
+::: tip
+ ***vs-card fixed :3.11.22 version***
+:::
+
+
 </box>
+
 
 <box>
 
@@ -196,9 +206,9 @@ If you need to set card with the same height, send the prop `fixed-height` and c
   <vs-row vs-justify="center">
     <vs-col type="flex" vs-justify="center" vs-align="center" vs-w="6">
       <vs-card class="cardx" fixedHeight>
-        <div slot="header">
+        <div slot="header"  header-class="change-color">
           <h3>
-            Hello world !
+            Change Background Color!
           </h3>
         </div>
         <div slot="media">
@@ -250,6 +260,9 @@ export default {
 .cardx
   margin 15px
 </style>
+<style lang="scss">.change-color {background-color:#fff722;} </style>
+
+
 
 ```
 
@@ -268,10 +281,10 @@ You can add hover functionality with the property `actionable`
     <vs-row vs-justify="center">
     <vs-col type="flex" vs-justify="center" vs-align="center" vs-w="6">
       <vs-card actionable class="cardx">
-        <div slot="header">
-          <h3>
-            Hello world !
-          </h3>
+        <div slot="header"  header-class="change-color">
+                 <h3>
+                   Change Background Color!
+                 </h3>
         </div>
         <div slot="media">
           <img :src="$withBase('/card.png')">
