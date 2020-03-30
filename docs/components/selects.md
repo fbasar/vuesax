@@ -96,6 +96,7 @@ API:
 
 Selects with a clean and smooth animation, that are very easy to implement.
 
+This select version fixed : 3.11.20 version
 </box>
 
 <box>

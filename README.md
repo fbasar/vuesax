@@ -76,7 +76,7 @@ If you feel awesome and want to support us in a small way, please consider starr
 ## Components
 
 - [Buttons](https://lusaxweb.github.io/vuesax/components/) - [v4](https://vuesax.com/docs/components/)
-- [Selects](https://lusaxweb.github.io/vuesax/components/selects.html) - [v4](https://vuesax.com/docs/components/Select.html)
+- [Selects](https://lusaxweb.github.io/vuesax/components/selects.html) - [v3 - fixed or change version - 3.11.20]
 - [Notifications](https://lusaxweb.github.io/vuesax/components/notifications.html) - [v4](https://vuesax.com/docs/components/Notification.html)
 - [Switch](https://lusaxweb.github.io/vuesax/components/switch.html) - [v4](https://vuesax.com/docs/components/Switch.html)
 - [CheckBox](https://lusaxweb.github.io/vuesax/components/checkbox.html) - [v4](https://vuesax.com/docs/components/Checkbox.html)
