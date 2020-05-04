@@ -12,8 +12,7 @@
     <label
       v-if="label"
       ref="inputSelectLabel"
-      class="vs-select--label"
-      for="">{{ label }}</label>
+      class="vs-select--label">{{ label }}</label>
     <div class="input-select-con">
       <!-- v-model="valueFilter" -->
       <input
@@ -23,6 +22,7 @@
         class="input-select vs-select--input"
         type="text"
         @click.stop
+        @click="clickEvent"
         @keydown.esc.stop.prevent="closeOptions"
         v-on="listeners">
 
@@ -235,7 +235,8 @@
               let childrens = this.$children.filter(item => {
                 return item.visible;
               });
-              childrens[0].$el.querySelector(".vs-select--item").focus();
+              if (childrens && Array.isArray(childrens) && childrens.length !== 0 && childrens[0].$el)
+                childrens[0].$el.querySelector(".vs-select--item").focus();
             } else {
               if (this.autocomplete) {
                 this.filterItems(event.target.value);
@@ -258,14 +259,15 @@
         this.$nextTick(() => {
           if (this.active) {
             utils.insertBody(this.$refs.vsSelectOptions);
-            setTimeout(() => {
-              this.$children.forEach(item => {
-                if (item.focusValue) {
-                  item.focusValue();
-                }
-              });
-              if (this.$refs.ulx.scrollHeight >= 260) this.scrollx = true;
-            }, 100);
+
+            this.$children.forEach(item => {
+              if (item.focusValue) {
+                item.focusValue();
+              }
+            });
+
+            if (this.$refs.ulx.scrollHeight >= 260) this.scrollx = true;
+
           } else {
             let [parent] = document.getElementsByTagName("body");
             parent.removeChild(this.$refs.vsSelectOptions);
@@ -302,6 +304,7 @@
         this.filterItems("");
         this.changeValue();
       },
+
       addMultiple(value) {
         let currentValues = this.value ? this.value : [];
         if (currentValues.includes(value)) {
@@ -407,16 +410,15 @@
         }
       },
       focus() {
-        if (this.$refs.inputSelectLabel)
+        if (this.$refs.inputSelectLabel) {
           this.$refs.inputSelectLabel.click();
-        else
+        } else {
           this.$refs.mainDiv.click();
+        }
         this.active = true;
         this.setLabelClass(this.$refs.inputSelectLabel, true);
         let inputx = this.$refs.inputselect;
-        setTimeout(() => {
-          document.addEventListener("click", this.clickBlur);
-        }, 100);
+
         if (this.autocomplete && this.multiple) {
           setTimeout(() => {
             if (inputx.value) {
@@ -441,15 +443,24 @@
         this.$nextTick(() => {
           this.cords = this.changePosition();
         });
+
+        setTimeout(() => {
+          document.addEventListener("click", this.clickBlur);
+        }, 200);
+
       },
       clickBlur(event) {
-        let closestx = event.target.closest(".vs-select--options");
+        let closestx = null;
+        if (event)
+          //multi selectte aktive oluyor kapanmaması icin
+          closestx = event.target.closest(".vs-select--options");
         if (!closestx) {
           this.closeOptions();
           if (this.autocomplete) {
             this.filterItems("");
           }
-          this.changeValue();
+
+          //this.changeValue();
         }
       },
       closeOptions() {
@@ -466,6 +477,7 @@
         let leftx = 0;
         let widthx = 0;
         let scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
+        if (!elx.getBoundingClientRect) return;
         if (
           elx.getBoundingClientRect().top + content.scrollHeight + 20 >=
           window.innerHeight
@@ -517,6 +529,9 @@
         }
 
         label.classList.remove("input-select-label-" + this.color + "--active");
+      },
+      clickEvent() {
+        this.focus();
       }
     }
   };
